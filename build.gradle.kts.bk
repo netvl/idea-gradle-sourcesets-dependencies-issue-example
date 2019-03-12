@@ -8,6 +8,10 @@ subprojects {
         plugin("scala")
         plugin("com.github.maiflai.scalatest")
     }
+    
+    repositories {
+        mavenCentral()
+    }
 
     dependencies {
         "compile"(group = "org.scala-lang", name = "scala-library", version = "2.11.12")

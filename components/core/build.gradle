@@ -1,0 +1,25 @@
+// existing configuration
+
+//val testRuntimeJar by tasks.creating(Jar::class) {
+//    from(sourceSets.test.map { it.output })
+//    archiveClassifier.set("test")
+//}
+//
+//artifacts {
+//    add("testRuntime", testRuntimeJar)
+//}
+
+// new configuration
+
+configurations {
+  testOutput.extendsFrom configurations.testRuntime
+}
+
+task testOutputJar(type: Jar) {
+  from sourceSets.test.output
+  archiveClassifier.set("test")
+}
+
+artifacts {
+  testOutput testOutputJar
+}
